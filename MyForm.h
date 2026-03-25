@@ -207,7 +207,10 @@ namespace Project1 {
 
 		if (comboBox1->SelectedIndex == 7) // Діагональ
 		{
-			//TODO: Вивести елементи головної діагоналі матриці
+			int diagSum = 0;
+			for (int i = 0; i < 5; i++) 
+				diagSum += matrix[i][i];
+			label1->Text = "Сума діагоналі: " + diagSum.ToString();
 		}
 
 		if (comboBox1->SelectedIndex == 8) // Транспонування
