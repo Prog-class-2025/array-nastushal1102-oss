@@ -36,6 +36,7 @@ namespace Project1 {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::Label^ label1;
 
 	protected:
 
@@ -58,6 +59,7 @@ namespace Project1 {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -99,6 +101,16 @@ namespace Project1 {
 			this->dataGridView1->Size = System::Drawing::Size(538, 182);
 			this->dataGridView1->TabIndex = 2;
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(256, 342);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(0, 20);
+			this->label1->TabIndex = 3;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -107,6 +119,7 @@ namespace Project1 {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->ClientSize = System::Drawing::Size(934, 428);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->comboBox1);
@@ -114,6 +127,7 @@ namespace Project1 {
 			this->Text = L"MyForm";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 
@@ -134,23 +148,39 @@ namespace Project1 {
 		}
 		if (comboBox1->SelectedIndex == 1) // Сума
 		{
-			//TODO: Сума елементів масиву
+			int sum = 0;
+			for (int i = 0; i < 5; i++) 
+				sum += mas1[i];
+			label1->Text = "Сума елементів масиву: " + sum.ToString();
 		}
 
 		if (comboBox1->SelectedIndex == 2) // Мінімум
 		{
-		//TODO: Мінімальний елемент масиву
-			
+			int min = mas1[0];
+			for (int i = 1; i < 5; i++) 
+				if (mas1[i] < min) 
+					min = mas1[i];
+			label1->Text = "Мінімальний елемент масиву: " + min.ToString();
 		}
 
 		if (comboBox1->SelectedIndex == 3) // Максимум
 		{
-			//TODO: Максимальний елемент масиву
+			int max = mas1[0];
+			for (int i = 1; i < 5; i++) 
+				if (mas1[i] > max) 
+					max = mas1[i];
+			label1->Text = "Максимальний елемент масиву: " + max.ToString();
 		}
 
 		if (comboBox1->SelectedIndex == 4) // Парні/непарні
 		{
-			//TODO: Вивести кількість парних та непарних елементів масиву
+			int evenCount = 0, oddCount = 0;
+			for (int i = 0; i < 5; i++) 
+				if (mas1[i] % 2 == 0) 
+					evenCount++; 
+				else 
+					oddCount++;
+			label1->Text = "Парні: " + evenCount.ToString() + ", Непарні: " + oddCount.ToString();
 		}
 		if (comboBox1->SelectedIndex == 5) // Заповнити матрицю
 		{
